@@ -1,0 +1,140 @@
+### CONTENEDORES
+
+# Registrar contenedor con sensores
+POST http://192.168.1.134:9000/api/contenedor
+Content-Type: application/json
+
+{
+  "nombreZona": "Universidad Tecnologica de la Sierra Hidalguense",
+  "tipoContenedor": "Inorganico",
+  "ubicacion": {
+    "lat": 20.89215,
+    "lng": -98.58374
+  },
+  "configSensor": {
+    "distanciaMin": 5,
+    "distanciaMax": 50,
+    "temperaturaMax": 40
+  }
+}
+
+### Obtener todos los contenedores
+GET http://192.168.1.135:9000/api/contenedor
+
+### Editar contenedor por matrícula
+PUT http://192.168.1.134:9000/api/contenedor/BT088
+Content-Type: application/json
+
+{
+  "nombreZona": "Universidad Tecnologica de la Sierra Hidalguense",
+  "tipoContenedor": "Peligroso"
+}
+
+### Eliminar contenedor
+DELETE http://192.168.1.134:9000/api/contenedor/BT086
+
+### Obtener contenedores asignados a un usuario
+GET http://192.168.1.134:9000/api/contenedor/usuario/67f195bb1d669f7c62610d7b
+
+### Asignar contenedor a usuario
+PUT http://192.168.1.134:9000/api/contenedor/ID_CONTENEDOR/asignar
+Content-Type: application/json
+
+{
+  "asignadoA": "ID_USUARIO"
+}
+
+
+### USUARIOS
+
+# Crear usuario (normal) con asignación de contenedores
+POST http://192.168.1.134:9000/api/usuarios
+Content-Type: application/json
+
+{
+  "nombreCompleto": "Agustin Zavaleta",
+  "usuario": "RobeFrt",
+  "correo": "betoazhueyaSFpGGVa@gmail.com",
+  "telefono": "7712382596",
+  "password": "12345678",
+  "creadoPor": "ID_DEL_ADMIN",
+  "contenedoresAsignados": ["BT001", "BT002"]
+}
+
+### Obtener todos los usuarios (superadmin)
+GET http://192.168.1.134:9000/api/usuarios
+
+### Obtener usuarios creados por admin
+GET http://192.168.1.134:9000/api/usuarios/creadosPor/ID_DEL_ADMIN
+
+### Editar usuario por matrícula
+PUT http://192.168.1.134:9000/api/usuarios/002
+Content-Type: application/json
+
+{
+  "nombreCompleto": "Roberto Agustin Zavaleta",
+  "usuario": "Robert08",
+  "correo": "betoazhueyapa@gmail.com",
+  "telefono": "7712382596"
+}
+
+### Eliminar usuario
+DELETE http://192.168.1.134:9000/api/usuarios/002
+
+
+### SENSORES
+
+# Enviar datos de sensor
+POST http://192.168.1.135:9000/api/sensor
+Content-Type: application/json
+
+{
+  "matriculaContenedor": "BT003",
+  "temperatura": 22.8,
+  "distancia": 3
+}
+
+### Obtener registros del sensor de un contenedor
+GET http://192.168.1.135:9000/api/sensor/BT003
+
+###
+POST http://192.168.137.1:9000/api/sensor
+Content-Type: application/json
+
+{
+  "matriculaContenedor": "BT004",
+  "temperatura": 22.8,
+  "distancia": 52
+}
+
+### Obtener último registro
+GET http://192.168.1.135:9000/api/sensor/BT003/ultimo
+
+### Obtener estadísticas
+GET http://192.168.1.135:9000/api/sensor/BT004/estadisticas
+
+
+### CONTACTOS
+
+# Registrar contacto
+POST http://192.168.1.134:9000/api/contacto
+Content-Type: application/json
+
+{
+  "nombre": "Agustin Zavaleta",
+  "correo": "betoazhJueyapa@gmail.com",
+  "telefono": "7712382596",
+  "mensaje": "Hola, soy un mensaje de prueba"
+}
+
+### Ver todos los contactos
+GET http://192.168.1.134:9000/api/contacto
+
+###
+POST http://192.168.1.134:9000/api/login
+Content-Type: application/json
+
+{
+  "usuario": "superadmin",
+  "password": "admin123"
+}
