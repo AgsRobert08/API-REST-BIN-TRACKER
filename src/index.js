@@ -33,11 +33,7 @@ app.get('/', (req, res) => {
 });
 
 /** Conexión a MongoDB */
-mongoose.connect(process.env.MONGODB_URI, {
-    dbName: 'bintracker',
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+mongoose.connect(process.env.MONGODB_URI);
 
 /** Evento: Conexión exitosa */
 mongoose.connection.on('connected', async () => {
