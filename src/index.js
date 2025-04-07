@@ -53,10 +53,10 @@ mongoose.connection.on('error', (err) => {
 });
 
 /** Iniciar servidor */
-app.listen(port, host, () => {
-    console.log(`✅ Servidor corriendo en http://${host}:${port}`);
-});
-
+app.listen(port, '0.0.0.0', () => {
+    console.log(`✅ Servidor corriendo en http://0.0.0.0:${port}`);
+  });
+  
 /** Función para crear el superadmin automáticamente */
 async function crearSuperadminSiNoExiste() {
     try {
