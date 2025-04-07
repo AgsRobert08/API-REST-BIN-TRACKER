@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Contacto = require('../models/contactos');
 const Usuario = require('../models/usuarios');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
 // POST - Registrar nuevo contacto
