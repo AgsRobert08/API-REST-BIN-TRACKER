@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Obtener todos los contenedores
-GET http://192.168.1.135:9000/api/contenedor
+GET https://api-rest-bin-tracker.onrender.com/api/contenedor/BT002
 
 ### Editar contenedor por matrícula
 PUT http://192.168.1.134:9000/api/contenedor/BT088
@@ -34,7 +34,7 @@ Content-Type: application/json
 DELETE http://192.168.1.134:9000/api/contenedor/BT086
 
 ### Obtener contenedores asignados a un usuario
-GET http://192.168.1.134:9000/api/contenedor/usuario/67f195bb1d669f7c62610d7b
+GET https://api-rest-bin-tracker.onrender.com/api/usuarios
 
 ### Asignar contenedor a usuario
 PUT http://192.168.1.134:9000/api/contenedor/ID_CONTENEDOR/asignar
@@ -48,13 +48,13 @@ Content-Type: application/json
 ### USUARIOS
 
 # Crear usuario (normal) con asignación de contenedores
-POST http://192.168.1.134:9000/api/usuarios
+POST https://api-rest-bin-tracker.onrender.com/api/usuarios
 Content-Type: application/json
 
 {
-  "nombreCompleto": "Agustin Zavaleta",
-  "usuario": "RobeFrt",
-  "correo": "betoazhueyaSFpGGVa@gmail.com",
+  "nombreCompleto": "Agustindslfge Zavaleta",
+  "usuario": "Robesdfsdft",
+  "correo": "betoazdoefjhueyaSFpGGVa@gmail.com",
   "telefono": "7712382596",
   "password": "12345678",
   "creadoPor": "ID_DEL_ADMIN",
@@ -62,7 +62,7 @@ Content-Type: application/json
 }
 
 ### Obtener todos los usuarios (superadmin)
-GET http://192.168.1.134:9000/api/usuarios
+GET https://api-rest-bin-tracker.onrender.com/api/contenedor/usuarios
 
 ### Obtener usuarios creados por admin
 GET http://192.168.1.134:9000/api/usuarios/creadosPor/ID_DEL_ADMIN
@@ -89,29 +89,30 @@ POST http://192.168.1.135:9000/api/sensor
 Content-Type: application/json
 
 {
-  "matriculaContenedor": "BT003",
+  "matriculaContenedor": "BT001",
   "temperatura": 22.8,
   "distancia": 3
 }
 
 ### Obtener registros del sensor de un contenedor
-GET http://192.168.1.135:9000/api/sensor/BT003
+GET https://api-rest-bin-tracker.onrender.com/api/sensor/BT001/ultimo
+
 
 ###
-POST http://192.168.137.1:9000/api/sensor
+POST https://api-rest-bin-tracker.onrender.com/api/sensor
 Content-Type: application/json
 
 {
-  "matriculaContenedor": "BT004",
+  "matriculaContenedor": "BT001",
   "temperatura": 22.8,
-  "distancia": 52
+  "distancia": 50
 }
 
 ### Obtener último registro
 GET http://192.168.1.135:9000/api/sensor/BT003/ultimo
 
 ### Obtener estadísticas
-GET http://192.168.1.135:9000/api/sensor/BT004/estadisticas
+GET https://api-rest-bin-tracker.onrender.com/api/contenedor/
 
 
 ### CONTACTOS
@@ -138,3 +139,7 @@ Content-Type: application/json
   "usuario": "superadmin",
   "password": "admin123"
 }
+
+
+###
+GET https://api-rest-bin-tracker.onrender.com/api/login
