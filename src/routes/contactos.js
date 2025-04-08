@@ -99,31 +99,40 @@ router.post('/contacto/convertir/:id', async (req, res) => {
             }
         });
 
-        // Enviar correo con enlace dinámico
         await transporter.sendMail({
             from: `"Bin Tracker" <${process.env.MAIL_USER}>`,
             to: correo,
             subject: 'Acceso a Bin Tracker - Panel de Administrador',
             html: `
-                <div style="font-family: Arial, sans-serif; color: #333;">
-                    <h2 style="color: #2e7d32;">Bienvenido a Bin Tracker 🌱</h2>
-                    <p>Ya puedes acceder a tu panel de monitoreo con estas credenciales:</p>
-                    <ul>
-                        <li><strong>Usuario:</strong> ${usuario}</li>
-                        <li><strong>Contraseña:</strong> ${passwordPlano}</li>
-                    </ul>
-                    <p>
-                        Accede desde: 
-                        <a href="${frontendUrl}/LoginScreen" style="color: #2e7d32; font-weight: bold;">
-                            ${frontendUrl}/LoginScreen
-                        </a>
-                    </p>
-                    <br />
-                    <p>Este acceso es exclusivo como <strong>Administrador</strong>. Desde tu panel podrás registrar a tu personal y gestionar tus contenedores de recolección.</p>
-                    <p style="margin-top: 30px;">💡 Consejo: cambia tu contraseña al iniciar sesión por seguridad.</p>
+              <div style="font-family: Arial, sans-serif; background-color: #f6f6f6; padding: 30px;">
+                <div style="max-width: 600px; margin: auto; background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                  <h2 style="color: #2e7d32; text-align: center;">¡Bienvenido a Bin Tracker 🌱!</h2>
+                  <p style="color: #333;">Ya puedes acceder a tu panel de monitoreo con estas credenciales:</p>
+                  <ul style="color: #444; padding-left: 20px;">
+                    <li><strong>Usuario:</strong> ${usuario}</li>
+                    <li><strong>Contraseña:</strong> ${passwordPlano}</li>
+                  </ul>
+          
+                  <p style="margin: 20px 0; text-align: center;">
+                    <a href="${frontendUrl}/LoginScreen" style="display: inline-block; background-color: #2e7d32; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+                      Ingresar a la plataforma
+                    </a>
+                  </p>
+          
+                  <p style="color: #333;">Este acceso es exclusivo como <strong>Administrador</strong>. Desde tu panel podrás registrar a tu personal y gestionar tus contenedores.</p>
+          
+                  <div style="margin-top: 30px; text-align: center;">
+                    <p style="font-weight: bold; color: #2e7d32;">¿Tienes un dispositivo móvil?</p>
+                    <p>Puedes usar también la app oficial:</p>
+                    <a href="https://expo.dev/artifacts/eas/pP2nidPpT7bHoH3HDCkGG7.apk" style="display: inline-block; margin-top: 10px; background-color: #1e88e5; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                      Descargar App Android
+                    </a>
+                  </div>
                 </div>
+              </div>
             `
-        });
+          });
+          
 
         console.log(`📬 Correo enviado a: ${correo}`);
         res.status(200).json({ message: '✅ Usuario creado y correo enviado correctamente.' });
